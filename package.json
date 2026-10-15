@@ -1,0 +1,54 @@
+{
+  "name": "aiguille-platformer",
+  "version": "1.0.0",
+  "productName": "Aiguille",
+  "private": true,
+  "type": "module",
+  "main": "electron/main.cjs",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build --base=./",
+    "preview": "vite preview",
+    "app": "electron .",
+    "dist:win": "npm run build && electron-builder --win nsis --publish never",
+    "publish:win": "npm run build && electron-builder --win nsis --publish always"
+  },
+  "dependencies": {
+    "electron-updater": "^6.6.2",
+    "phaser": "^3.90.0"
+  },
+  "devDependencies": {
+    "electron": "^35.0.0",
+    "electron-builder": "^26.0.0",
+    "vite": "^6.0.0"
+  },
+  "build": {
+    "appId": "fr.aiguille.platformer",
+    "productName": "Aiguille",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "package.json"
+    ],
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "tiagomoreira3454-arch",
+        "repo": "Aiguille-plateformer",
+        "releaseType": "release"
+      }
+    ],
+    "win": {
+      "target": "nsis"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  }
+}

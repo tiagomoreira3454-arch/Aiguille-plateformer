@@ -1,1 +1,6 @@
-Jeux 2D/
+node_modules/
+dist/
+release/
+.env
+.env.*
+*.log
